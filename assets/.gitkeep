@@ -1,0 +1,15 @@
+# assets/ Directory
+
+## Purpose
+User-provided brand assets, images, logos, and fonts.
+
+## Rules
+- User uploads assets per-session (not committed to repo)
+- Store in `state/` subdirectory with session reference
+- Validate file types before use: SVG, PNG, JPG, WEBP, GIF
+- No asset fetching from external URLs without user consent
+
+## V1 Constraints
+- No stock photo fetching
+- No external font CDN (system fonts only)
+- No user-uploaded executable files

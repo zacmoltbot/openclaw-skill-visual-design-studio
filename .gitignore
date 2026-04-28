@@ -1,0 +1,25 @@
+# Playwright browsers (downloaded at runtime)
+.playwright-browsers/
+
+# Node modules (for scripts/ if used)
+node_modules/
+
+# Runtime / generated state — directories tracked via .gitkeep negations below
+tmp/
+state/artifacts/
+state/review-packs/
+state/critique/
+state/decks/
+state/diffs/
+state/verify/
+
+# Keep .gitkeep in state/ subdirs so dirs are preserved after clone
+# (git cannot track files inside an ignored directory on its own,
+# but this pattern lets the placeholder survive git init in each subdir)
+!state/.gitkeep
+!state/artifacts/.gitkeep
+!state/review-packs/.gitkeep
+!state/critique/.gitkeep
+!state/decks/.gitkeep
+!state/diffs/.gitkeep
+!state/verify/.gitkeep

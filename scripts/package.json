@@ -1,0 +1,17 @@
+{
+  "name": "visual-design-studio-scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Playwright scripts for visual-design-studio skill",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "smoke": "node scripts/playwright/smoke.js",
+    "screenshot": "node scripts/playwright/screenshot.js",
+    "pdf": "node scripts/playwright/pdf.js",
+    "smoke-test": "bash scripts/smoke_test.sh"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

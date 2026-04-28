@@ -1,0 +1,21 @@
+# scripts/ Directory
+
+## Purpose
+Playwright automation scripts and helper utilities.
+
+## Structure (V1)
+```
+scripts/
+├── playwright/
+│   ├── smoke.js        # Basic page load + error check
+│   ├── screenshot.js  # Full-page screenshot export
+│   ├── pdf.js         # PDF export
+│   └── verify.js      # Configurable verification
+├── package.json       # Minimal deps (playwright)
+└── setup.sh          # (Phase 1) Install + browser download
+```
+
+## Notes
+- All scripts accept CLI flags or JSON config
+- Output goes to `../state/` directory
+- Return exit code 0 = pass, non-zero = fail

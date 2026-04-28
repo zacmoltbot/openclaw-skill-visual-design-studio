@@ -1,0 +1,18 @@
+# state/ Directory
+
+## Purpose
+Runtime working directory for artifacts, verification reports, and temp outputs.
+
+## Subdirectories
+```
+state/
+├── artifacts/    # Generated HTML, screenshots, PDFs
+├── verify/       # Playwright verification JSON reports
+└── sessions/     # Per-session working files (optional)
+```
+
+## Notes
+- All contents here are generated — not committed to repo
+- Artifacts should be downloadable by the user
+- Reports are for structured output (JSON) to be parsed by the skill
+- Cleanup policy: artifacts older than 7 days can be purged (Phase 2)

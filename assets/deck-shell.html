@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentation</title>
+  <style>
+    /* ─── Brand Tokens ─────────────────────────────────────────── */
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #1a202c;
+      --color-text-muted: #718096;
+      --color-accent: #5a67d8;
+      --color-accent-light: #e8eaf6;
+
+      --font-sans: system-ui, -apple-system, "Noto Sans TC", sans-serif;
+
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+      --text-5xl: 3rem;
+
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-bg);
+      color: var(--color-text);
+      /* 16:9 aspect ratio viewport */
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ─── Slide Container ───────────────────────────────────────── */
+    .deck {
+      width: 100%;
+      height: 100%;
+    }
+
+    section.slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: var(--space-12) var(--space-16);
+      /* Center content vertically */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    section.slide.active { display: flex; }
+
+    /* ─── Slide Typography ──────────────────────────────────────── */
+    .slide-title {
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: var(--space-6);
+      line-height: 1.2;
+    }
+    .slide-subtitle {
+      font-size: var(--text-xl);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-8);
+    }
+    .slide-body {
+      font-size: var(--text-lg);
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+
+    /* ─── Navigation Hint ──────────────────────────────────────── */
+    .deck-hint {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* ─── Print Styles ──────────────────────────────────────────── */
+    @media print {
+      section.slide { page-break-after: always; display: flex !important; }
+      .deck-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <!--
+      Slides go here. Add class="active" to the first slide.
+      Keyboard: Arrow keys to navigate.
+    -->
+    <section class="slide active">
+      <h1 class="slide-title">Slide Title</h1>
+      <p class="slide-subtitle">Subtitle or tagline</p>
+      <p class="slide-body">Content goes here.</p>
+    </section>
+
+    <section class="slide">
+      <h2 class="slide-title">Second Slide</h2>
+      <p class="slide-body">More content...</p>
+    </section>
+  </div>
+
+  <div class="deck-hint">← → 鍵切換</div>
+
+  <script>
+    // ─── Simple keyboard navigation ───────────────────────────────
+    const slides = document.querySelectorAll('section.slide');
+    let current = 0;
+
+    function showSlide(idx) {
+      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+      current = idx;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+        e.preventDefault();
+        showSlide((current + 1) % slides.length);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        showSlide((current - 1 + slides.length) % slides.length);
+      }
+    });
+  </script>
+</body>
+</html>
